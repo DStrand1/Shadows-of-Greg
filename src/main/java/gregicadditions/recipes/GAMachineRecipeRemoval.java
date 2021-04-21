@@ -33,12 +33,19 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class GAMachineRecipeRemoval {
 
+	private static final MaterialStack[] solderingList = { new MaterialStack(Materials.Tin, 2L), new MaterialStack(Materials.SolderingAlloy, 1L), new MaterialStack(Materials.Lead, 4L) };
+
 	public static void init() {
 		for (Material m : Material.MATERIAL_REGISTRY) {
 
 			//Foil recipes
 			if(m instanceof IngotMaterial && m.hasFlag("GENERATE_FOIL")) {
 				removeRecipesByInputs(RecipeMaps.BENDER_RECIPES, OreDictUnifier.get(OrePrefix.plate, m), IntCircuitIngredient.getIntegratedCircuit(0));
+			}
+
+			//Remove Old Wrench Recipes
+			if (m instanceof IngotMaterial && !m.hasFlag(DustMaterial.MatFlags.NO_SMASHING) && GAConfig.GT6.ExpensiveWrenches) {
+				ModHandler.removeRecipeByName(new ResourceLocation(String.format("gregtech:wrench_%s", m.toString())));
 			}
 
 			//Remove EV+ Cable Recipes
@@ -163,5 +170,14 @@ public class GAMachineRecipeRemoval {
 		else {
 			GregicAdditions.LOGGER.info("Failed to Remove Recipe for inputs: Items: " + itemNames + " Fluids: " + fluidNames);
 		}
+	}
+
+	private static <R extends RecipeBuilder<R>> void removeAllRecipes(RecipeMap<R> map) {
+
+		List<Recipe> recipes = new ArrayList<>();
+		recipes.addAll(map.getRecipeList());
+
+		for (Recipe r : recipes)
+			map.removeRecipe(r);
 	}
 }
