@@ -5,6 +5,7 @@ import java.util.function.Function;
 import forestry.api.core.ForestryAPI;
 import forestry.core.config.Constants;
 import forestry.modules.ForestryModuleUids;
+import gregicadditions.recipes.GAReplacementRecipes;
 import net.minecraft.util.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -98,6 +99,10 @@ public class GregicAdditions {
 		MachineCraftingRecipes.init();
 		GAMetaItems.registerOreDict();
 		GAMetaItems.registerRecipes();
+
+
+		// Recipes used to convert between GAMetaItem and new GTCE versions of it
+		GAReplacementRecipes.initGAMetaItem();
 	}
 
 	private <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
