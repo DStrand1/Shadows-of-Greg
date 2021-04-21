@@ -3,28 +3,14 @@ package gregicadditions.item;
 import java.util.List;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GregicAdditions;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class GAMetaItems {
 
 	private static List<MetaItem<?>> ITEMS = MetaItem.getMetaItems();
-
-	public static MetaItem<?>.MetaValueItem GLASS_FIBER;
-	public static MetaItem<?>.MetaValueItem PETRI_DISH;
-	public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY;
-	public static MetaItem<?>.MetaValueItem ENERGY_MODULE;
-	public static MetaItem<?>.MetaValueItem ENERGY_CLUSTER;
-	public static MetaItem<?>.MetaValueItem MAX_BATTERY;
 
 	public static MetaItem<?>.MetaValueItem ELECTRODE_APATITE;
 	public static MetaItem<?>.MetaValueItem ELECTRODE_BLAZE;
@@ -48,9 +34,6 @@ public class GAMetaItems {
 	public static MetaItem<?>.MetaValueItem SCHEMATIC_2X2;
 	public static MetaItem<?>.MetaValueItem SCHEMATIC_3X3;
 	public static MetaItem<?>.MetaValueItem SCHEMATIC_DUST;
-
-	public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
-	public static MetaItem<?>.MetaValueItem STEM_CELLS;
 
 	public static void init() {
 		GAMetaItem item = new GAMetaItem(gatherRegisteredPrefixes());
@@ -80,12 +63,6 @@ public class GAMetaItems {
 			if (item instanceof GAMetaItem) {
 				((GAMetaItem) item).registerOreDict();
 			}
-		}
-	}
-
-	public static void registerRecipes() {
-		for (MetaItem<?> item : ITEMS) {
-			if (item instanceof GAMetaTool) ((GAMetaTool) item).registerRecipes();
 		}
 	}
 
