@@ -17,7 +17,6 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.recipes.GAMachineRecipeRemoval;
 import gregicadditions.recipes.GARecipeAddition;
-import gregicadditions.recipes.MachineCraftingRecipes;
 import gregicadditions.tconstruct.TinkersMaterials;
 import gregtech.common.blocks.VariantItemBlock;
 import net.minecraft.block.Block;
@@ -96,7 +95,6 @@ public class GregicAdditions {
 		GARecipeAddition.init();
 		GARecipeAddition.init2();
 		GARecipeAddition.forestrySupport();
-		MachineCraftingRecipes.init();
 		GAMetaItems.registerOreDict();
 		GAMetaItems.registerRecipes();
 
