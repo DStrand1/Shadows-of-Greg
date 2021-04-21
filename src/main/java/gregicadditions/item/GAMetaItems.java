@@ -89,26 +89,6 @@ public class GAMetaItems {
 		}
 	}
 
-	public static ItemStack getFilledCell(Fluid fluid, int count) {
-		ItemStack fluidCell = MetaItems.FLUID_CELL.getStackForm().copy();
-		IFluidHandlerItem fluidHandlerItem = fluidCell.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-		try {
-			fluidHandlerItem.fill(new FluidStack(fluid, 1000), true);
-
-		} catch (Exception e) {
-			GregicAdditions.LOGGER.error("The fluid " + fluid.toString() + " failed to do something with getFilledCell");
-			GregicAdditions.LOGGER.error(e);
-			fluidHandlerItem.fill(new FluidStack(FluidRegistry.WATER, 1000), true);
-		}
-		fluidCell = fluidHandlerItem.getContainer();
-		fluidCell.setCount(count);
-		return fluidCell;
-	}
-
-	public static ItemStack getFilledCell(Fluid fluid) {
-		return getFilledCell(fluid, 1);
-	}
-
 	public static boolean hasPrefix(ItemStack stack, String prefix, String... ignore) {
 		for (int i : OreDictionary.getOreIDs(stack)) {
 			if (OreDictionary.getOreName(i).startsWith(prefix)) {
