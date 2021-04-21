@@ -49,11 +49,6 @@ public class GregicAdditions {
 
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-	public GregicAdditions() {
-		GAEnums.preInit();
-
-	}
-
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		GAMetaItems.init();
